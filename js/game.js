@@ -47,6 +47,7 @@ export class Game {
     this._introTimer = null;
 
     this._bindInput();
+    this._bindTouchControls();
     this._loop = this._loop.bind(this);
     this.animationId = requestAnimationFrame(this._loop);
   }
@@ -82,6 +83,46 @@ export class Game {
       if (e.code === 'ArrowRight' || e.code === 'KeyD') this.keys.right = false;
       if (e.code === 'Space') this.keys.shoot = false;
     });
+  }
+
+  _bindTouchControls() {
+    const panel = document.getElementById('touch-controls');
+    const leftBtn = document.getElementById('touch-left');
+    const rightBtn = document.getElementById('touch-right');
+    const shootBtn = document.getElementById('touch-shoot');
+
+    if (!panel || !leftBtn || !rightBtn || !shootBtn) return;
+
+    const isTouchDevice =
+      'ontouchstart' in window || navigator.maxTouchPoints > 0 || matchMedia('(hover: none)').matches;
+
+    if (!isTouchDevice) return;
+
+    panel.classList.remove('hidden');
+    panel.setAttribute('aria-hidden', 'false');
+
+    const bindButton = (button, key) => {
+      const press = (e) => {
+        e.preventDefault();
+        this.keys[key] = true;
+        button.classList.add('active');
+      };
+      const release = (e) => {
+        e.preventDefault();
+        this.keys[key] = false;
+        button.classList.remove('active');
+      };
+
+      button.addEventListener('pointerdown', press);
+      button.addEventListener('pointerup', release);
+      button.addEventListener('pointerleave', release);
+      button.addEventListener('pointercancel', release);
+      button.addEventListener('contextmenu', (e) => e.preventDefault());
+    };
+
+    bindButton(leftBtn, 'left');
+    bindButton(rightBtn, 'right');
+    bindButton(shootBtn, 'shoot');
   }
 
   start() {

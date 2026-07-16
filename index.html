@@ -2,7 +2,9 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="飞机大战 — 浏览器射击小游戏，保卫领空，击毁敌机！">
+  <meta name="theme-color" content="#0a0a1a">
   <title>飞机大战</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -19,6 +21,7 @@
         <p>← → 或 A D — 移动</p>
         <p>空格 — 射击</p>
         <p>P — 暂停</p>
+        <p class="touch-hint">手机端可使用屏幕下方虚拟按键</p>
       </div>
       <p class="hint">击毁敌机有 25% 概率掉落道具，同类效果可叠加层数并延长持续时间（最多 6 层）</p>
       <p class="hint">连续击毁敌机可触发连击加分，3 连击起额外得分</p>
@@ -47,6 +50,12 @@
       <p>最终得分: <span id="victory-score">0</span></p>
       <button id="btn-victory-restart">再来一局</button>
       <button id="btn-victory-menu">返回主菜单</button>
+    </div>
+
+    <div id="touch-controls" class="hidden" aria-hidden="true">
+      <button type="button" id="touch-left" aria-label="向左移动">◀</button>
+      <button type="button" id="touch-shoot" aria-label="射击">●</button>
+      <button type="button" id="touch-right" aria-label="向右移动">▶</button>
     </div>
   </div>
   <script type="module" src="js/main.js"></script>
