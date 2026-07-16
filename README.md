@@ -6,12 +6,17 @@
 
 **[点击开始游戏 →](https://sw937.github.io/plane-battle/)**
 
-> 首次部署需先在 GitHub 开启 Pages（只需设置一次）：
-> 1. 打开 [仓库 Pages 设置](https://github.com/SW937/plane-battle/settings/pages)
-> 2. **Build and deployment → Source** 选择 **GitHub Actions**
-> 3. 保存后，在 [Actions](https://github.com/SW937/plane-battle/actions) 页面重新运行失败的 **Deploy to GitHub Pages** 工作流
->
-> 部署成功后，访问地址为：**https://sw937.github.io/plane-battle/**
+## 首次开启 Pages（解决 404，只需设置一次）
+
+打开 **[仓库 Pages 设置](https://github.com/SW937/plane-battle/settings/pages)**，按下面配置：
+
+1. **Build and deployment → Source** 选择 **Deploy from a branch**
+2. **Branch** 选择 **gh-pages**，文件夹选 **/ (root)**
+3. 点击 **Save**
+
+保存后等待约 1 分钟，再访问：**https://sw937.github.io/plane-battle/**
+
+> 推送代码后会自动运行 [Deploy 工作流](https://github.com/SW937/plane-battle/actions)，把游戏发布到 `gh-pages` 分支。
 
 ## 操作说明
 
