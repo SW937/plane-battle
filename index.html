@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="飞机大战 — 浏览器射击小游戏，保卫领空，击毁敌机！">
+  <meta name="theme-color" content="#0a0a1a">
+  <title>飞机大战</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="game-container">
+    <button id="btn-mute" title="关闭音乐">🔊</button>
+    <canvas id="gameCanvas" width="480" height="700"></canvas>
+
+    <div id="menu-screen" class="screen">
+      <h1>✈ 飞机大战</h1>
+      <p class="subtitle">保卫领空，击毁敌机！</p>
+      <button id="btn-start">开始游戏</button>
+      <div class="controls">
+        <p>← → 或 A D — 移动</p>
+        <p>空格 — 射击</p>
+        <p>P — 暂停</p>
+        <p class="touch-hint">手机端可使用屏幕下方虚拟按键</p>
+      </div>
+      <p class="hint">击毁敌机有 25% 概率掉落道具，同类效果可叠加层数并延长持续时间（最多 6 层）</p>
+      <p class="hint">连续击毁敌机可触发连击加分，3 连击起额外得分</p>
+    </div>
+
+    <div id="pause-screen" class="screen hidden">
+      <h2>已暂停</h2>
+      <p>按 P 继续</p>
+    </div>
+
+    <div id="level-screen" class="screen hidden">
+      <h2 id="level-title">第 1 关</h2>
+      <p id="level-desc"></p>
+    </div>
+
+    <div id="gameover-screen" class="screen hidden">
+      <h2>游戏结束</h2>
+      <p>得分: <span id="final-score">0</span></p>
+      <button id="btn-restart">再来一局</button>
+      <button id="btn-menu">返回主菜单</button>
+    </div>
+
+    <div id="victory-screen" class="screen hidden">
+      <h2>🎉 胜利！</h2>
+      <p>你击毁了所有敌机！</p>
+      <p>最终得分: <span id="victory-score">0</span></p>
+      <button id="btn-victory-restart">再来一局</button>
+      <button id="btn-victory-menu">返回主菜单</button>
+    </div>
+
+    <div id="touch-controls" class="hidden" aria-hidden="true">
+      <button type="button" id="touch-left" aria-label="向左移动">◀</button>
+      <button type="button" id="touch-shoot" aria-label="射击">●</button>
+      <button type="button" id="touch-right" aria-label="向右移动">▶</button>
+    </div>
+  </div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

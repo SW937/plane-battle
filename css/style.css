@@ -1,0 +1,195 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0a0a1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  overflow: hidden;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#game-container {
+  position: relative;
+}
+
+#btn-mute {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  font-size: 1.1rem;
+  line-height: 36px;
+  background: rgba(13, 27, 42, 0.8);
+  color: #e0e1dd;
+  border: 1px solid #415a77;
+  border-radius: 50%;
+}
+
+#btn-mute:hover {
+  background: rgba(65, 90, 119, 0.6);
+  box-shadow: 0 0 10px rgba(65, 90, 119, 0.5);
+}
+
+#gameCanvas {
+  display: block;
+  background: linear-gradient(180deg, #0d1b2a 0%, #1b263b 50%, #0d1b2a 100%);
+  border: 2px solid #415a77;
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(65, 90, 119, 0.5);
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(10, 10, 26, 0.85);
+  border-radius: 8px;
+  color: #e0e1dd;
+  text-align: center;
+  gap: 12px;
+}
+
+.screen.hidden {
+  display: none;
+}
+
+.screen h1 {
+  font-size: 2.5rem;
+  color: #ffd60a;
+  text-shadow: 0 0 20px rgba(255, 214, 10, 0.5);
+}
+
+.screen h2 {
+  font-size: 2rem;
+  color: #ffd60a;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #adb5bd;
+}
+
+.controls {
+  margin-top: 16px;
+  line-height: 1.8;
+  color: #ced4da;
+  font-size: 0.95rem;
+}
+
+.hint {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+.touch-hint {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: #778da9;
+}
+
+#touch-controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+#touch-controls.hidden {
+  display: none;
+}
+
+#touch-controls button {
+  pointer-events: auto;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  font-size: 1.4rem;
+  line-height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 214, 10, 0.85);
+  color: #0a0a1a;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  margin: 0;
+  touch-action: none;
+}
+
+#touch-controls button:active,
+#touch-controls button.active {
+  transform: scale(0.92);
+  background: rgba(255, 195, 0, 1);
+  box-shadow: 0 0 16px rgba(255, 214, 10, 0.5);
+}
+
+#touch-shoot {
+  width: 72px;
+  height: 72px;
+  line-height: 72px;
+  font-size: 1.6rem;
+}
+
+@media (max-width: 520px) {
+  #game-container {
+    transform: scale(min(1, calc((100vw - 16px) / 484)));
+    transform-origin: center center;
+  }
+
+  .screen h1 {
+    font-size: 2rem;
+  }
+
+  .controls {
+    font-size: 0.85rem;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .touch-hint {
+    display: block;
+  }
+}
+
+button {
+  padding: 12px 36px;
+  font-size: 1.1rem;
+  font-family: inherit;
+  color: #0a0a1a;
+  background: linear-gradient(135deg, #ffd60a, #ffc300);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  margin: 4px;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 214, 10, 0.4);
+}
+
+button:active {
+  transform: scale(0.98);
+}
